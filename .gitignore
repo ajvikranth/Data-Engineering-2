@@ -5,3 +5,4 @@ gcs.json
 gcs-aj.json
 .cache
 *.csv
+venv
