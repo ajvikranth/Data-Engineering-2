@@ -3,7 +3,7 @@ import json
 
 def produce(topic:str ,data:dict)->bool:
 
-    producer = KafkaProducer(bootstrap_servers=['localhost:9094'],value_serializer=lambda m: json.dumps(m).encode('ascii'))
+    producer = KafkaProducer(bootstrap_servers=['Astrokin:9094'],value_serializer=lambda m: json.dumps(m).encode('ascii'))
     try:
 
         if topic == 'detail':
