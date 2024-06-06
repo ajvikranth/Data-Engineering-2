@@ -4,7 +4,7 @@ COPY . .
 
 RUN pip3 install -r requirements.txt
 
-RUN luigid
+RUN luigid --background
 
 # RUN crontab crontab
 
