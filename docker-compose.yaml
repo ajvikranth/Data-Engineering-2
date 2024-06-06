@@ -31,7 +31,7 @@ services:
       - confluent
   luigipipeline:
     build: 
-      context: ./Luigi_pipline
+      context: ./Luigi_pipline/
       dockerfile: dockerfile
     networks:
       - confluent
