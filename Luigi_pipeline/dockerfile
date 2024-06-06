@@ -6,6 +6,8 @@ RUN pip install -r requirements.txt
 
 RUN luigid
 
-RUN crontab crontab
+# RUN crontab crontab
 
-CMD ["crond", "-f"]
+# CMD ["crond", "-f"]
+
+CMD ["python", "main.py",">>","logfile"]
