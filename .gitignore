@@ -1,0 +1,7 @@
+__pycache__
+*.db
+config.py
+gcs.json
+gcs-aj.json
+.cache
+*.csv
