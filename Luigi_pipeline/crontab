@@ -1,1 +1,1 @@
-10  * * * python /main.py >> /logfile
+0 4 * * * python /main.py >> /logfile

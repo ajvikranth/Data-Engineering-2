@@ -7,6 +7,7 @@ if __name__=="__main__":
     for topic in topics:
         for value in consume_from_topics(topic):
             if value is None:
+                print("no track to insert")
                 break
             if topic == 'detail':
                 x =insert_track_details(value)
@@ -25,27 +26,3 @@ if __name__=="__main__":
                 x =insert_track_ranks(value)
                 if x:
                     print('track rank inserted')            
-        # print(data)
-        # if list(data)[0] == None:
-        #     print('no data to consume')
-        # if topic == 'detail':
-        #     for i in data:
-        #         print(i)
-        #         x =insert_track_details(i)
-        #         if x:
-        #             print('track details inserted')
-        # elif topic == 'analysis':
-        #     for i in data:
-        #         x = insert_track_analysis(i)
-        #         if x:
-        #             print('track analysis inserted')
-        # elif topic == 'recommendations':
-        #     for i in data:
-        #         x=insert_track_recommendations(i)
-        #         if x:
-        #             print('track recommendation inserted')
-        # elif topic == 'rank':
-        #     for i in data:
-        #         x = insert_track_ranks(i)
-        #         if x:
-        #             print('track rank inserted')

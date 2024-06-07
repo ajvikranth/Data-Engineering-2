@@ -13,7 +13,6 @@ if __name__=="__main__":
         print(tracks_in_playlist)
         for recommendations in consume_from_recomendations():
             print(recommendations)
-
             for track in recommendations['recommendations']:
                 print(track in tracks_in_playlist)
                 if track in tracks_in_playlist:

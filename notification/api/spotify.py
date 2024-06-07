@@ -1,10 +1,14 @@
 from spotipy.oauth2 import SpotifyClientCredentials
 import spotipy
 import time
-SPOTIPY_CLIENT_ID='141673f9a8224ec49f7be1ee15e50ee0'
-SPOTIPY_CLIENT_SECRET='a5c94f0cc64b470d84b6290c35004b77'
+from config.config import config
+from collections.abc import Iterator
+from typing import Tuple
 
-def get_tracks_from_playlist(playlist_id):
+SPOTIPY_CLIENT_ID= config['SPOTIPY_CLIENT_ID']
+SPOTIPY_CLIENT_SECRET=config['SPOTIPY_CLIENT_SECRET']
+
+def get_tracks_from_playlist(playlist_id:str)->Iterator[Tuple[str,int]]:
         sp = spotipy.Spotify(client_credentials_manager=SpotifyClientCredentials(
         client_id=SPOTIPY_CLIENT_ID,
         client_secret=SPOTIPY_CLIENT_SECRET))

@@ -1,15 +1,13 @@
 from kafka import KafkaConsumer
 import json 
-import time
+from collections.abc import Iterator
 
-
-def consume_from_recomendations():
+def consume_from_recomendations()->Iterator[dict|None]:
     consumer = KafkaConsumer(auto_offset_reset='earliest', enable_auto_commit=False,
-    bootstrap_servers='localhost:9094',consumer_timeout_ms=5000)
+    bootstrap_servers='kafka:9092',consumer_timeout_ms=5000)
     consumer.subscribe('recommendations')
-    n=0
+
     for message in consumer:
-        n+=1
         try :
             value =  json.loads(message[6].decode('utf-8'))
         except IndexError:

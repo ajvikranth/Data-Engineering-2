@@ -1,10 +1,11 @@
 from supabase import create_client, Client
 import datetime
+from config.config import config
 
-url: str = 'https://rcxvnznxzdfzexjwpgcl.supabase.co'
-key: str = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJjeHZuem54emRmemV4andwZ2NsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTc1MjE3NTAsImV4cCI6MjAzMzA5Nzc1MH0.Kucxu7zfOHDQBk-jON47snp-rkYWHWTu9QG10cPSEUQ'
+url: str = config['url']
+key: str = config['key']
 
-def insert_track_analysis(track_analysis):
+def insert_track_analysis(track_analysis:dict)->bool:
 
     # track_analysis = list(track_analysis)[0]
     supabase: Client = create_client(url, key)
@@ -14,16 +15,14 @@ def insert_track_analysis(track_analysis):
         return True
     return False
 
-def insert_track_details(track_details):
+def insert_track_details(track_details:dict)->bool:
 
-    # track_details = list(track_details)[0]
     del track_details['rank']
-    
+
     try:
         datetime.date.fromisoformat((track_details['release_date']))
     except ValueError:
         track_details['release_date'] = None
-
 
     supabase: Client = create_client(url, key)
     
@@ -33,20 +32,18 @@ def insert_track_details(track_details):
         return True
     return False
 
-def insert_track_ranks(ranks):
+def insert_track_ranks(ranks:dict)->bool:
 
-    # ranks = list(ranks)[0]
     supabase: Client = create_client(url, key)
     
     data, count = supabase.table('ranks').upsert(ranks).execute()
     data, ls = data
+
     if len(ls)>0:
         return True
     return False
 
-def insert_track_recommendations(recommendations):
-
-    # recommendations = list(recommendations)[0]
+def insert_track_recommendations(recommendations:dict)->bool:
     
     supabase: Client = create_client(url, key)
     
@@ -94,7 +91,7 @@ if __name__=="__main__":
         'id': '1o9JJeBKlVxQ9O4j5Qd4Vh',
         'recommendations': ['1o9JJeBKlVxQ9O4j5Qd4Vh','1o9JJeBKlVxQ9O4j5Qd4Vh','1o9JJeBKlVxQ9O4j5Qd4Vh','1o9JJeBKlVxQ9O4j5Qd4Vh']
     }
-    # print(track_analysis)
+    print(track_analysis)
     print(insert_track_analysis(track_analysis))
-    # print(insert_track_details(track_details))
-    # print(insert_track_recommendations(recommendations))
+    print(insert_track_details(track_details))
+    print(insert_track_recommendations(recommendations))
