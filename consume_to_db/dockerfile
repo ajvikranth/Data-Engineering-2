@@ -4,8 +4,8 @@ COPY . .
 
 RUN pip3 install -r requirements.txt
 
-# RUN crontab crontab
+RUN crontab crontab
 
-# CMD ["crond", "-f"]
+CMD ["crond", "-f"]
 
-CMD ["python", "main.py",">>","logfile"]
+# CMD ["python", "main.py",">>","logfile"]
