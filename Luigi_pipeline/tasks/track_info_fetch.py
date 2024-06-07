@@ -43,8 +43,8 @@ class fetch_track_info(luigi.Task):
                         yield KafkaProduce(topic='detail',data = r_track_details)
                         yield KafkaProduce(topic='analysis',data = r_track_analysis)
 
-            if n>=1:
-                break
+            # if n>=1:
+            #     break
 
 
 
