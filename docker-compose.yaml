@@ -29,19 +29,19 @@ services:
       KAFKA_LOG_RETENTION_CHECK_INTERVAL_HOURS: 6
     networks:
       - confluent
-  LuigiPipeline:
+  luigipipeline:
     build: 
       context: ./Luigi_pipeline
       dockerfile: dockerfile
     networks:
       - confluent
-  DbConsumer:
+  dbconsumer:
     build:
       context: ./consume_to_db
       dockerfile: dockerfile
     networks:
       - confluent
-  Notifier:
+  notifier:
     build: 
       context: ./notification
       dockerfile: dockerfile
